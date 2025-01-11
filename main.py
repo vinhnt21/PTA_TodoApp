@@ -28,10 +28,9 @@ class App:
         self.login_window.show()
         return self.app.exec()
 
-    # loginn
+    # login
     def open_register(self):
         self.register_window.show()
-        self.login_window.hide()
 
     def login(self):
         username = self.login_window.input_username.text()
