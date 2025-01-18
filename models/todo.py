@@ -1,5 +1,4 @@
 class Todo:
-    def __init__(self, title, description="", completed=False):
+    def __init__(self, title, completed=False):
         self.title = title
-        self.description = description
         self.completed = completed

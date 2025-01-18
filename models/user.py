@@ -7,5 +7,5 @@ class User:
         self.password = password
         self.todo_manager = []
 
-    def add_todo(self, title, description):
-        self.todo_manager.append(Todo(title, description))
+    def add_todo(self, title):
+        self.todo_manager.append(Todo(title))

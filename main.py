@@ -74,7 +74,6 @@ class App:
     # todo
     def add_todo(self):
         title_todo = self.todo_window.lineEdit.text()
-        description_todo = self.todo_window.textEdit.toPlainText()
         if not title_todo:
             QMessageBox.critical(
                 self.todo_window, "Error", "Tiêu đề không được để trống"
@@ -88,19 +87,19 @@ class App:
                 )
                 return
 
-        self.user.add_todo(title_todo, description_todo)
-        QMessageBox.information(
-            self.todo_window, "Success", "Thêm công việc thành công"
-        )
+        self.user.add_todo(title_todo)
 
         self.todo_window.todo_list_widget.addItem(title_todo)
+
+        # enable button set_done
+        self.todo_window.btn_set_done.setEnabled(True)
 
     def set_done(self):
         # get item selected from todo_list_widget
         todo_title = self.todo_window.todo_list_widget.currentItem().text()
         for todo in self.user.todo_manager:
             if todo.title == todo_title:
-                todo.is_done = True
+                todo.completed = True
                 break
 
         QMessageBox.information(self.todo_window, "Success", "Đã hoàn thành công việc")
@@ -117,10 +116,9 @@ class App:
         todo_title = self.todo_window.done_list_widget.currentItem().text()
         for todo in self.user.todo_manager:
             if todo.title == todo_title:
-                todo.is_done = False
+                todo.completed = False
                 break
 
-        QMessageBox.information(self.todo_window, "Success", "Đã hoàn thành công việc")
         # remove item from done_list_widget
         self.todo_window.done_list_widget.takeItem(
             self.todo_window.done_list_widget.currentRow()

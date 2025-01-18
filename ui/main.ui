@@ -129,7 +129,7 @@ QLabel {
       <x>10</x>
       <y>60</y>
       <width>231</width>
-      <height>237</height>
+      <height>111</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -144,25 +144,6 @@ QLabel {
       <widget class="QLineEdit" name="lineEdit">
        <property name="text">
         <string/>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QLabel" name="label_4">
-       <property name="text">
-        <string>Description</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QTextEdit" name="textEdit">
-       <property name="styleSheet">
-        <string notr="true">background-color: #E0F7FF; /* Light blue for contrast */
-    border: 2px solid #007BFF; /* Bright blue border */
-    border-radius: 5px;        /* Slightly rounded corners */
-    padding: 5px;              /* Padding inside the field */
-    color: #003366;            /* Dark text for readability */
-    font-size: 14px;</string>
        </property>
       </widget>
      </item>
