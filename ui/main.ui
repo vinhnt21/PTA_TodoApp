@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>819</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Gradient background for the entire application */
+QWidget {
+    background: qlineargradient(
+        spread: pad, 
+        x1: 0, y1: 0, 
+        x2: 1, y2: 1, 
+        stop: 0 #003366,   /* Dark blue */
+        stop: 0.33 #00509E, /* Medium blue */
+        stop: 0.66 #007BFF, /* Bright blue */
+        stop: 1 #89CFF0    /* Light blue */
+    );
+    color: white; /* Default text color for contrast */
+}
+
+/* Style for push buttons with hover effect */
+QPushButton {
+    background-color: #00509E; /* Medium blue */
+    border: 2px solid #003366; /* Darker border for contrast */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 8px 15px;         /* Padding inside the button */
+    color: white;              /* White text */
+    font-size: 14px;           /* Button font size */
+    font-weight: bold;         /* Bold text */
+}
+
+/* Hover effect for buttons */
+QPushButton:hover {
+    background-color: #007BFF; /* Bright blue on hover */
+    border: 2px solid #89CFF0; /* Lighter border on hover */
+    color: #F0F8FF;            /* Slightly lighter text */
+}
+
+/* Style for line edit */
+QLineEdit {
+    background-color: #E0F7FF; /* Light blue for contrast */
+    border: 2px solid #007BFF; /* Bright blue border */
+    border-radius: 5px;        /* Slightly rounded corners */
+    padding: 5px;              /* Padding inside the field */
+    color: #003366;            /* Dark text for readability */
+    font-size: 14px;
+}
+
+/* Style for labels */
+QLabel {
+    color: #F0F8FF;            /* Light text for contrast */
+    font-size: 16px;           /* Slightly larger font for visibility */
+    font-weight: bold;         /* Bold text */
+}
+</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>204</x>
+      <y>205</y>
+      <width>211</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cửa số chính</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>819</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

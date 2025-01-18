@@ -2,6 +2,7 @@ from PyQt6.QtWidgets import *
 import sys
 from ui.login_window import LoginWindow
 from ui.register_window import RegisterWindow
+from ui.main_window import MainWindow
 from models.user_manager import UserManager
 
 
@@ -35,10 +36,14 @@ class App:
     def login(self):
         username = self.login_window.input_username.text()
         password = self.login_window.input_password.text()
+        
         result = self.user_manager.check_user(username, password)
         if result["status"]:
             QMessageBox.information(self.login_window, "Success", result["message"])
             # Xử lý tiếp
+            self.todo_window = MainWindow()
+            self.todo_window.show()
+            self.login_window.hide()
         else:
             QMessageBox.critical(self.login_window, "Error", result["message"])
 
