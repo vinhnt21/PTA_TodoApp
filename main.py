@@ -15,7 +15,7 @@ class App:
 
         # Data
         self.user_manager = UserManager()
-        self.todo_manager = None  # Sẽ được tạo sau khi login
+        self.user = None
 
         # Kết nối các sự kiện với các hàm xử lý
         # login
@@ -24,6 +24,11 @@ class App:
         # register
         self.register_window.btn_open_login_window.clicked.connect(self.open_login)
         self.register_window.btn_register.clicked.connect(self.register)
+
+    def init_todo(self):
+        self.todo_window.btn_add_todo.clicked.connect(self.add_todo)
+        self.todo_window.btn_set_done.clicked.connect(self.set_done)
+        self.todo_window.btn_set_not_done.clicked.connect(self.set_not_done)
 
     def run(self):
         self.login_window.show()
@@ -36,7 +41,7 @@ class App:
     def login(self):
         username = self.login_window.input_username.text()
         password = self.login_window.input_password.text()
-        
+
         result = self.user_manager.check_user(username, password)
         if result["status"]:
             QMessageBox.information(self.login_window, "Success", result["message"])
@@ -44,6 +49,8 @@ class App:
             self.todo_window = MainWindow()
             self.todo_window.show()
             self.login_window.hide()
+            self.user = result["user"]
+            self.init_todo()
         else:
             QMessageBox.critical(self.login_window, "Error", result["message"])
 
@@ -65,6 +72,62 @@ class App:
             QMessageBox.critical(self.register_window, "Error", result["message"])
 
     # todo
+    def add_todo(self):
+        title_todo = self.todo_window.lineEdit.text()
+        description_todo = self.todo_window.textEdit.toPlainText()
+        if not title_todo:
+            QMessageBox.critical(
+                self.todo_window, "Error", "Tiêu đề không được để trống"
+            )
+            return
+
+        for todo in self.user.todo_manager:
+            if todo.title == title_todo:
+                QMessageBox.critical(
+                    self.todo_window, "Error", "Tiêu đề công việc đã tồn tại"
+                )
+                return
+
+        self.user.add_todo(title_todo, description_todo)
+        QMessageBox.information(
+            self.todo_window, "Success", "Thêm công việc thành công"
+        )
+
+        self.todo_window.todo_list_widget.addItem(title_todo)
+
+    def set_done(self):
+        # get item selected from todo_list_widget
+        todo_title = self.todo_window.todo_list_widget.currentItem().text()
+        for todo in self.user.todo_manager:
+            if todo.title == todo_title:
+                todo.is_done = True
+                break
+
+        QMessageBox.information(self.todo_window, "Success", "Đã hoàn thành công việc")
+        # remove item from todo_list_widget
+        self.todo_window.todo_list_widget.takeItem(
+            self.todo_window.todo_list_widget.currentRow()
+        )
+
+        # add item to done_list_widget
+        self.todo_window.done_list_widget.addItem(todo_title)
+
+    def set_not_done(self):
+        # get item selected from done_list_widget
+        todo_title = self.todo_window.done_list_widget.currentItem().text()
+        for todo in self.user.todo_manager:
+            if todo.title == todo_title:
+                todo.is_done = False
+                break
+
+        QMessageBox.information(self.todo_window, "Success", "Đã hoàn thành công việc")
+        # remove item from done_list_widget
+        self.todo_window.done_list_widget.takeItem(
+            self.todo_window.done_list_widget.currentRow()
+        )
+
+        # add item to todo_list_widget
+        self.todo_window.todo_list_widget.addItem(todo_title)
 
 
 if __name__ == "__main__":

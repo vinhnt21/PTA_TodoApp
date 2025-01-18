@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>819</width>
+    <width>1202</width>
     <height>700</height>
    </rect>
   </property>
@@ -65,31 +65,117 @@ QLabel {
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>204</x>
-      <y>205</y>
-      <width>211</width>
-      <height>81</height>
+      <x>290</x>
+      <y>60</y>
+      <width>391</width>
+      <height>581</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Cửa số chính</string>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Todo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_set_done">
+       <property name="text">
+        <string>Set Done</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="todo_list_widget"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>60</y>
+      <width>391</width>
+      <height>581</height>
+     </rect>
     </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Done</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_set_not_done">
+       <property name="text">
+        <string>Set Node Done</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QListWidget" name="done_list_widget"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>231</width>
+      <height>237</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Title</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit">
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QTextEdit" name="textEdit">
+       <property name="styleSheet">
+        <string notr="true">background-color: #E0F7FF; /* Light blue for contrast */
+    border: 2px solid #007BFF; /* Bright blue border */
+    border-radius: 5px;        /* Slightly rounded corners */
+    padding: 5px;              /* Padding inside the field */
+    color: #003366;            /* Dark text for readability */
+    font-size: 14px;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_add_todo">
+       <property name="text">
+        <string>Add Todo</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>819</width>
-     <height>26</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>
